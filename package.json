@@ -1,7 +1,7 @@
 {
   "name": "creap",
   "version": "0.1.0",
-  "engine": {
+  "engines": {
     "node": "20.x",
     "npm": "9.8.x"
   },
