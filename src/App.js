@@ -65,7 +65,7 @@ export default function App() {
         // const signer = provider.getSigner();
         // const wavePortalContract = new ethers.Contract(contractAddress, contractABI, signer);
         // const waves = await wavePortalContract.getAllWaves();
-        await getAllWaves();
+        refreshAllWaves();
 
       } else {
         console.log("No authorized account found")
@@ -75,10 +75,11 @@ export default function App() {
     }
   }
 
-  const getAllWaves = async () => {
+  const refreshAllWaves = async () => {
     try {
-      if (window.ethereum) {
-        const provider = new ethers.providers.Web3Provider
+      const { ethereum } = window;
+      if (ethereum) {
+        const provider = new ethers.providers.Web3Provider(ethereum);
         const signer = provider.getSigner();
         const wavePortalContract = new ethers.Contract(contractAddress, wavePortal.abi, signer);
 
@@ -172,11 +173,11 @@ export default function App() {
   };
 
  useEffect(() => {
-    // findMetaMaskAccount().then((account) => {
-    //   if (account !== null) {
-    //     setCurrentAccount(account);
-    //   }
-    // });
+    findMetaMaskAccount().then((account) => {
+      if (account !== null) {
+        setCurrentAccount(account);
+      }
+    });
 
     checkIfWalletIsConnected();
   }, []);
