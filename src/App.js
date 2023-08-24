@@ -102,7 +102,7 @@ export default function App() {
 
       <div className="dataContainer">
         <div className="header">
-        👋 Hey there!
+        Wallet Message Portal
         </div>
 
         <div className="bio">
