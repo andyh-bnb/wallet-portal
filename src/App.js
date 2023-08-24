@@ -38,7 +38,9 @@ export default function App() {
   const [currentAccount, setCurrentAccount] = useState("");
   //WalletPortal address previously deployed
   const [allWaves, setAllWaves] = useState([]);
-  const contractAddress = "0x1b56710cb69037BD1075FeAAd1437Ff91b5C2eCa";
+
+  //>>>> UPDATE Deployed Contract Address HERE! <<<<<<<
+  const contractAddress = "0x5AB5ECa3EAAc05d23F62E3397aB6C66dAd09ABA0";
   //"./utils/WavePortal.json" copid from contract's artifact json
   const contractABI = wavePortal.abi;
   
