@@ -6,34 +6,34 @@ import wavePortal from "./utils/WavePortal.json";
 
 const getEthereumObject = () => window.ethereum;
 
-const findMetaMaskAccount = async () => {
-  try {
-    const ethereum = getEthereumObject();
+// const findMetaMaskAccount = async () => {
+//   try {
+//     const ethereum = getEthereumObject();
 
-    /*
-    * First make sure we have access to the Ethereum object.
-    */
-    if (!ethereum) {
-      console.error("Make sure you have Metamask!");
-      return null;
-    }
+//     /*
+//     * First make sure we have access to the Ethereum object.
+//     */
+//     if (!ethereum) {
+//       console.error("Make sure you have Metamask!");
+//       return null;
+//     }
 
-    console.log("We have the Ethereum object", ethereum);
-    const accounts = await ethereum.request({ method: "eth_accounts" });
+//     console.log("We have the Ethereum object", ethereum);
+//     const accounts = await ethereum.request({ method: "eth_accounts" });
 
-    if (accounts.length !== 0) {
-      const account = accounts[0];
-      console.log("Found an authorized account:", account);
-      return account;
-    } else {
-      console.error("No authorized account found");
-      return null;
-    }
-  } catch (error) {
-    console.error(error);
-    return null;
-  }
-};
+//     if (accounts.length !== 0) {
+//       const account = accounts[0];
+//       console.log("Found an authorized account:", account);
+//       return account;
+//     } else {
+//       console.error("No authorized account found");
+//       return null;
+//     }
+//   } catch (error) {
+//     console.error(error);
+//     return null;
+//   }
+// };
 export default function App() {
   const [currentAccount, setCurrentAccount] = useState("");
   //WalletPortal address previously deployed
@@ -173,11 +173,11 @@ export default function App() {
   };
 
  useEffect(() => {
-    findMetaMaskAccount().then((account) => {
-      if (account !== null) {
-        setCurrentAccount(account);
-      }
-    });
+    // findMetaMaskAccount().then((account) => {
+    //   if (account !== null) {
+    //     setCurrentAccount(account);
+    //   }
+    // });
 
     checkIfWalletIsConnected();
   }, []);
