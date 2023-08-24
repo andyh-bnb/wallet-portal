@@ -2,7 +2,7 @@ import * as React from "react";
 import { useState, useEffect } from 'react';
 import { ethers } from "ethers";
 import './App.css';
-import abi from "./utils/WavePortal.json";
+import wavePortal from "./utils/WavePortal.json";
 
 const getEthereumObject = () => window.ethereum;
 
@@ -40,7 +40,7 @@ export default function App() {
   const [allWaves, setAllWaves] = useState([]);
   const contractAddress = "0x1b56710cb69037BD1075FeAAd1437Ff91b5C2eCa";
   //"./utils/WavePortal.json" copid from contract's artifact json
-  const contractABI = abi.abi;
+  const contractABI = wavePortal.abi;
   
   const checkIfWalletIsConnected = async () => {
     try {
@@ -136,7 +136,7 @@ export default function App() {
         console.log("Retrieved total wave msg count...", count.toNumber());
 
         // Execute the actual wave from the smart contract
-        const waveTxn = await wavePortalContract.wave("a simple message Z");
+        const waveTxn = await wavePortalContract.wave("a simple message X");
         console.log("Mining...", waveTxn.hash);
 
         await waveTxn.wait();
