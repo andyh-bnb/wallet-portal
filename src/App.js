@@ -37,7 +37,7 @@ const findMetaMaskAccount = async () => {
 export default function App() {
   const [currentAccount, setCurrentAccount] = useState("");
   //WalletPortal address previously deployed
-  contractAddress = "0x271d07251C20eFa8C713b67545408ee9B9dC39CC";
+  const contractAddress = "0x271d07251C20eFa8C713b67545408ee9B9dC39CC";
   //"./utils/WavePortal.json" copid from contract's artifact json
   const contractABI = abi.abi;
 
