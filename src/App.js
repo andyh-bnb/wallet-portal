@@ -11,9 +11,6 @@ const findMetaMaskAccount = async () => {
   try {
     const ethereum = getEthereumObject();
 
-    /*
-    * First make sure we have access to the Ethereum object.
-    */
     if (!ethereum) {
       console.error("Make sure you have Metamask!");
       return null;
@@ -45,42 +42,43 @@ export default function App() {
   //"./utils/WavePortal.json" copid from contract's artifact json
   const contractABI = wavePortal.abi;
   
-  const checkIfWalletIsConnected = async () => {
-    console.log("checkIfWalletIsConnected");
-    try {
-      const { ethereum } = window;
+  // const checkIfWalletIsConnected = async () => {
+  //   console.log("checkIfWalletIsConnected");
+  //   try {
+  //     const { ethereum } = window;
 
-      if (!ethereum) {
-        console.log("Make sure you have metamask!");
-        return;
-      } else {
-        console.log("We have the ethereum object", ethereum);
-      }
+  //     if (!ethereum) {
+  //       console.log("Make sure you have metamask!");
+  //       return;
+  //     } else {
+  //       console.log("We have the ethereum object", ethereum);
+  //     }
 
-      const accounts = await ethereum.request({ method: 'eth_accounts' });
+  //     const accounts = await ethereum.request({ method: 'eth_accounts' });
 
-      if (accounts.length !== 0) {
-        const account = accounts[0];
-        console.log("Found an authorized account:", account);
-        setCurrentAccount(account)
+  //     if (accounts.length !== 0) {
+  //       const account = accounts[0];
+  //       console.log("Found an authorized account:", account);
+  //       setCurrentAccount(account)
         
-        //Get a cleaned message log     
-        // const provider = new ethers.providers.Web3Provider(ethereum);
-        // const signer = provider.getSigner();
-        // const wavePortalContract = new ethers.Contract(contractAddress, contractABI, signer);
-        // const waves = await wavePortalContract.getAllWaves();
-        refreshAllWaves();
+  //       //Get a cleaned message log     
+  //       // const provider = new ethers.providers.Web3Provider(ethereum);
+  //       // const signer = provider.getSigner();
+  //       // const wavePortalContract = new ethers.Contract(contractAddress, contractABI, signer);
+  //       // const waves = await wavePortalContract.getAllWaves();
+  //       refreshAllWaves();
 
-      } else {
-        console.log("No authorized account found")
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  }
+  //     } else {
+  //       console.log("No authorized account found")
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
 
   const refreshAllWaves = async () => {
     try {
+      console.log("refreshAllMsgs");
       const { ethereum } = window;
       if (ethereum) {
         const provider = new ethers.providers.Web3Provider(ethereum);
@@ -180,10 +178,11 @@ export default function App() {
     findMetaMaskAccount().then((account) => {
       if (account !== null) {
         setCurrentAccount(account);
+        refreshAllWaves();
       }
     });
 
-    checkIfWalletIsConnected();
+    //checkIfWalletIsConnected();
   }, []);
   
   return (
