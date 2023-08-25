@@ -136,7 +136,7 @@ export default function App() {
         console.log("Retrieved total msg count...", count.toNumber());
 
         // Execute the sending wave msg from the smart contract
-        let randomNumber = Math.floor(Math.random(1000));
+        let randomNumber = Math.floor(Math.random()*1000);
         let message = "a simple message " + randomNumber;
 
         const waveTxn = await wavePortalContract.wave(message, { gasLimit: 300000});
