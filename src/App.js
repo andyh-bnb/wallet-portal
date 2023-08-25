@@ -175,6 +175,7 @@ export default function App() {
   };
 
  useEffect(() => {
+
     findMetaMaskAccount().then((account) => {
       if (account !== null) {
         setCurrentAccount(account);
@@ -183,6 +184,34 @@ export default function App() {
     });
 
     //checkIfWalletIsConnected();
+    //Event listener
+    let wavePortalContract;
+
+    const onNewWave = (from, timestamp, message) => {
+      console.log("NewWave", from, timestamp, message);
+      setAllWaves(prevState => [
+        ...prevState,
+        {
+          address: from,
+          timestamp: new Date(timestamp * 1000),
+          message: message,
+        },
+      ]);
+    };
+  
+    if (window.ethereum) {
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const signer = provider.getSigner();
+  
+      wavePortalContract = new ethers.Contract(contractAddress, contractABI, signer);
+      wavePortalContract.on("NewWave", onNewWave);
+    }
+  
+    return () => {
+      if (wavePortalContract) {
+        wavePortalContract.off("NewWave", onNewWave);
+      }
+    };
   }, []);
   
   return (
