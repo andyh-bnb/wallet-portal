@@ -131,22 +131,22 @@ export default function App() {
         //Store our data in React State
         setAllWaves(wavesCleaned);
 
-        // const waveTxn = await wavePortalContract.wave("a simple message Z");
-        // console.log("Mining...", waveTxn.hash);
-
-        //Simple Wave Count
+        //Get Message Count
         let count = await wavePortalContract.getTotalWaves();
-        console.log("Retrieved total wave msg count...", count.toNumber());
+        console.log("Retrieved total msg count...", count.toNumber());
 
-        // Execute the actual wave from the smart contract
-        const waveTxn = await wavePortalContract.wave("a simple message X");
+        // Execute the sending wave msg from the smart contract
+        let randomNumber = Math.floor(Math.random(1000));
+        let message = "a simple message " + randomNumber;
+
+        const waveTxn = await wavePortalContract.wave(message, { gasLimit: 300000});
         console.log("Mining...", waveTxn.hash);
 
         await waveTxn.wait();
         console.log("Mined -- ", waveTxn.hash);
 
         count = await wavePortalContract.getTotalWaves();
-        console.log("Retrieved total wave msg count...", count.toNumber());
+        console.log("Retrieved total  msg count...", count.toNumber());
 
       } else {
         console.log("Ethereum object doesn't exist!");
@@ -159,7 +159,7 @@ export default function App() {
     try {
       const ethereum = getEthereumObject();
       if (!ethereum) {
-        alert("Get MetaMask!");
+        alert("Need a Wallet or MetaMask.");
         return;
       }
 
