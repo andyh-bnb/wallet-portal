@@ -41,7 +41,7 @@ export default function App() {
   const [allWaves, setAllWaves] = useState([]);
 
   //>>>> UPDATE Deployed Contract Address HERE! <<<<<<<
-  const contractAddress = "0x5AB5ECa3EAAc05d23F62E3397aB6C66dAd09ABA0";
+  const contractAddress = "0x419408F15E9A62212d780DeB9BaA2f8edbB514D8";
   //"./utils/WavePortal.json" copid from contract's artifact json
   const contractABI = wavePortal.abi;
   
