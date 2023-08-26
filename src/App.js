@@ -141,7 +141,8 @@ export default function App() {
 
         // Execute the sending wave msg from the smart contract
         let randomNumber = Math.floor(Math.random()*1000);
-        let message = "a simple message " + randomNumber;
+        //let message = "a simple message " + randomNumber;
+        let message = {donation};
 
         const waveTxn = await wavePortalContract.wave(message, { gasLimit: 300000});
         console.log("Mining...", waveTxn.hash);
@@ -244,7 +245,7 @@ export default function App() {
 
         <div>
             <div className="donation">
-                Current Donation:{donation} Goerli ETH
+                Donate Goerli ETH: {donation}
             </div>
             <input className="input" type="text" onChange={(e)=>{setDonation(e.target.value)}}/>
 

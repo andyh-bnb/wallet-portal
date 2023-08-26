@@ -20,6 +20,7 @@
 
 .donation {
   text-align: center;
+  font-weight: bold;
 }
 .input{
   margin:auto;
@@ -31,7 +32,7 @@
 
 .bio {
   text-align: center;
-  color: rgb(124, 118, 118);
+  color: rgb(14, 59, 74);
   margin-top: 16px;
 }
 
