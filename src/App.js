@@ -109,7 +109,7 @@ export default function App() {
     }
   }
 
-  const wave = async () => {
+  const wave = async ( _message) => {
     try {
       const { ethereum } = window;
 
@@ -142,7 +142,7 @@ export default function App() {
         // Execute the sending wave msg from the smart contract
         let randomNumber = Math.floor(Math.random()*1000);
         //let message = "a simple message " + randomNumber;
-        let message = {donation};
+        let message = _message;
 
         const waveTxn = await wavePortalContract.wave(message, { gasLimit: 300000});
         console.log("Mining...", waveTxn.hash);
@@ -252,7 +252,7 @@ export default function App() {
         </div>
         
         
-        <button className="waveButton" onClick={wave}>
+        <button className="waveButton" onClick={wave({donation})}>
           Donate!
         </button>
        
