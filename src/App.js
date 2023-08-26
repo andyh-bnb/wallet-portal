@@ -109,8 +109,18 @@ export default function App() {
     }
   }
 
-  const wave = async ( _message) => {
+  // function testGetValue(value) {
+  //   console.log(value);
+  // }
+
+  const testGetValue = (value) => {
+    console.log(value);
+    //console.log(typeof(parseInt(value)));
+  }
+
+  const wave = async (_message) => {
     try {
+      //console.log("message:"+_message);
       const { ethereum } = window;
 
       if (ethereum) {
@@ -140,7 +150,7 @@ export default function App() {
         console.log("Retrieved total msg count...", count.toNumber());
 
         // Execute the sending wave msg from the smart contract
-        let randomNumber = Math.floor(Math.random()*1000);
+        //let randomNumber = Math.floor(Math.random()*1000);
         //let message = "a simple message " + randomNumber;
         let message = _message;
 
@@ -161,6 +171,7 @@ export default function App() {
     }
 }
   const connectWallet = async () => {
+    console.log("connectWallet");
     try {
       const ethereum = getEthereumObject();
       if (!ethereum) {
@@ -178,6 +189,7 @@ export default function App() {
       console.error(error);
     }
   };
+
 
  useEffect(() => {
 
@@ -228,7 +240,7 @@ export default function App() {
         </div>
 
         <div className="bio">
-        Connect your Ethereum wallet and send a message to me.
+        Connect your Ethereum wallet and send donation to Tibetan in India.
         </div>
 
          {/*
@@ -245,17 +257,28 @@ export default function App() {
 
         <div>
             <div className="donation">
-                Donate Goerli ETH: {donation}
+                Donate ETH: {donation}
             </div>
-            <input className="input" type="text" onChange={(e)=>{setDonation(e.target.value)}}/>
+            <input id="donationInput-El" className="input" type="text" onChange={(e)=>{setDonation(e.target.value)}}/>
 
         </div>
-        
-        
-        <button className="waveButton" onClick={wave({donation})}>
+
+        <button className="waveButton" onClick={() => testGetValue(donation)} >
+          Confirm
+        </button>
+
+        <button className="waveButton" onClick={() => wave(donation)} >
           Donate!
         </button>
+
+        {/* <button className="waveButton" onClick={wave}>
+          Donate!
+        </button> */}
        
+        
+       
+        
+
         {allWaves.map((wave, index) => {
           return (
             <div key={index} style={{ backgroundColor: "OldLace", marginTop: "16px", padding: "8px" }}>
