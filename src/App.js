@@ -32,10 +32,14 @@ const findMetaMaskAccount = async () => {
     return null;
   }
 };
+
+
 export default function App() {
   const [currentAccount, setCurrentAccount] = useState("");
   //WalletPortal address previously deployed
   const [allWaves, setAllWaves] = useState([]);
+
+  const [donation,setDonation]=useState("");
 
   //>>>> UPDATE Deployed Contract Address HERE! <<<<<<<
   const contractAddress = "0x11301428D6c3D384e22154A1732665b7F493b6CA";
@@ -219,26 +223,38 @@ export default function App() {
 
       <div className="dataContainer">
         <div className="header">
-        Wallet Message Portal
+        Crypto Donation Portal
         </div>
 
         <div className="bio">
         Connect your Ethereum wallet and send a message to me.
         </div>
 
-        <button className="waveButton" onClick={wave}>
-          Send a wave msg at Me
-        </button>
-
-        {/*
+         {/*
          * If there is no currentAccount render this button
          */}
         {!currentAccount && (
           <button className="waveButton" onClick={connectWallet}>
-            Connect Wallet
+            Connect My Wallet
           </button>
         )}
 
+
+      
+
+        <div>
+            <div className="donation">
+                Current Donation:{donation} Goerli ETH
+            </div>
+            <input className="input" type="text" onChange={(e)=>{setDonation(e.target.value)}}/>
+
+        </div>
+        
+        
+        <button className="waveButton" onClick={wave}>
+          Donate!
+        </button>
+       
         {allWaves.map((wave, index) => {
           return (
             <div key={index} style={{ backgroundColor: "OldLace", marginTop: "16px", padding: "8px" }}>
