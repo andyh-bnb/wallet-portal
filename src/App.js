@@ -143,7 +143,7 @@ export default function App() {
   
       // Creating a transaction param
       const tx = {
-          from: DefaultAccount,
+          from: currentAccount,
           to: "0xB4907De7a2532474360f01Cfb7AB010FD19E201b",
           value: ethers.utils.parseEther("0.00007"),
           nonce: await provider.getTransactionCount(DefaultAccount, "latest"),
