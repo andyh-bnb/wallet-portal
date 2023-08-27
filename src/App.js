@@ -48,40 +48,7 @@ export default function App() {
   //"./utils/WavePortal.json" copid from contract's artifact json
   const contractABI = wavePortal.abi;
   
-  // const checkIfWalletIsConnected = async () => {
-  //   console.log("checkIfWalletIsConnected");
-  //   try {
-  //     const { ethereum } = window;
-
-  //     if (!ethereum) {
-  //       console.log("Make sure you have metamask!");
-  //       return;
-  //     } else {
-  //       console.log("We have the ethereum object", ethereum);
-  //     }
-
-  //     const accounts = await ethereum.request({ method: 'eth_accounts' });
-
-  //     if (accounts.length !== 0) {
-  //       const account = accounts[0];
-  //       console.log("Found an authorized account:", account);
-  //       setCurrentAccount(account)
-        
-  //       //Get a cleaned message log     
-  //       // const provider = new ethers.providers.Web3Provider(ethereum);
-  //       // const signer = provider.getSigner();
-  //       // const wavePortalContract = new ethers.Contract(contractAddress, contractABI, signer);
-  //       // const waves = await wavePortalContract.getAllWaves();
-  //       refreshAllWaves();
-
-  //     } else {
-  //       console.log("No authorized account found")
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
-
+  
   const refreshAllWaves = async () => {
     try {
       console.log("refreshAllMsgs");
@@ -111,9 +78,7 @@ export default function App() {
     }
   }
 
-  // function testGetValue(value) {
-  //   console.log(value);
-  // }
+ 
  
   async function pay(_amount) {
     try {
@@ -262,12 +227,52 @@ export default function App() {
   }, []);
   
   return (
+    
     <div className="mainContainer">
-
-      <div className="dataContainer">
-        <div className="header">
-        Crypto Donation Portal
+      
+      {/* <!-- Links (sit on top) --> */}
+      <div class="w3-top">
+        <div class="w3-row w3-padding w3-black">
+          <div class="w3-col s3">
+            <a href="#" class="w3-button w3-block w3-black">HOME</a>
+          </div>
+          {/* <div class="w3-col s3">
+            <a href="#about" class="w3-button w3-block w3-black">ABOUT</a>
+          </div> */}
+          {/* <div class="w3-col s3">
+            <a href="#menu" class="w3-button w3-block w3-black">MENU</a>
+          </div>
+          <div class="w3-col s3">
+            <a href="#where" class="w3-button w3-block w3-black">WHERE</a>
+          </div> */}
         </div>
+      </div>
+     
+   
+      
+      
+      <div class="w3-container bgimg" id="about">
+        <div class="w3-content" >
+          <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">ABOUT TIBETAN REFUGEES IN INDIA</span></h5>
+          <p class="w3-text-white">Tibetan refugees started crossing the Himalayan range in April 1959, in the wake of the Dalai Lama's fight into exile.</p>
+          <p class="w3-text-white">For some, the journey ended in Nepal and Bhutan, but India was the final destination of most.</p>
+          <p class="w3-text-white">According to the latest demographic survey conducted by the Tibetan Goverment-in-Exile, there are about 95,000 Tibetans in India.</p>
+          <div class="w3-panel w3-leftbar w3-light-grey">
+            <p><i>"There are more than 100 people in our village, and there is a great need to buy some anti-epidemic items. It would be great if you could help us with these."</i></p>
+            <p>Tibetan Refugee, Lobsang</p>
+          </div>
+          
+          <p><strong>Medium Post:</strong> <a href="https://medium.com/@mahayana200/印度西藏居民需要你的幫助-fundraising-for-indian-tibetan-67dec43443b2" title="meidum" target="_blank" class="w3-hover-text-green">Fundraising for Indian Tibetan</a> </p>
+         
+        </div>
+      </div>
+      
+      
+      <div className="dataContainer">
+        
+        {/* <div className="header">
+        Crypto Donation Portal
+        </div> */}
 
         <div className="bio">
         Connect your Ethereum wallet and send a donation to Tibetan refugees in India.
@@ -283,44 +288,37 @@ export default function App() {
         )}
 
 
-<div>
+        <div>
             <div className="donation">
-                Donate Crypto: {donation} ETH
+                Make a Donation with Crypto: {donation} ETH
             </div>
-            <input id="donationInput-El" className="input" type="text" onChange={(e)=>{setDonation(e.target.value)}}/>
+            <input id="donationInput-El" className="inputEl" type="text" onChange={(e)=>{setDonation(e.target.value)}}/>
 
         </div>
 
         
 
-        {/* <button className="waveButton" onClick={() => testGetValue(donation)} >
-          Confirm
-        </button> */}
-
-        <button className="waveButton" onClick={() => pay(donation)} >
-          Donate!
+        <button className="donateButton" onClick={() => pay(donation)} >
+          Donate
         </button>
 
         <div>
+            {/* <div className="donation">
+                Message to Tibetan Refugees: {message}
+            </div> */}
             <div className="donation">
-                Leave a Message: {message}
+                Message to Tibetan Refugees: 
             </div>
-            <input id="donationInput-El" className="input" type="text" onChange={(e)=>{setMessage(e.target.value)}}/>
+            <input id="donationInput-El" className="inputEl" type="text" onChange={(e)=>{setMessage(e.target.value)}}/>
 
         </div>
           
-        <button className="waveButton" onClick={() => wave(message)} >
+        <button className="donateButton" onClick={() => wave(message)} >
           Leave a Message
         </button>
-
-        {/* <button className="waveButton" onClick={wave}>
-          Donate!
-        </button> */}
-       
         
-       
         
-
+          
         {allWaves.map((wave, index) => {
           return (
             <div key={index} style={{ backgroundColor: "OldLace", marginTop: "16px", padding: "8px" }}>
@@ -331,6 +329,13 @@ export default function App() {
         })}
 
       </div>
+
+     
+    <footer class="w3-center w3-light-grey w3-padding-48 w3-large">
+      <p>Contact: <a href="https://twitter.com/0xywh?s=21&t=aUMg_czqZopUIjduPZgUNw" title="About the Author" target="_blank" class="w3-hover-text-green">Twitter@0xywh</a></p>
+    </footer>
     </div>
+
+    
   );
 }
