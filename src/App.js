@@ -5,7 +5,7 @@ import './App.css';
 import wavePortal from "./utils/WavePortal.json";
 
 const getEthereumObject = () => window.ethereum;
-const deployedContractAddress ="0xB4907De7a2532474360f01Cfb7AB010FD19E201b";
+const deployedContractAddress ="0x0611D641e6740AcbAbA132282be6D98e430128f5";
 
 const findMetaMaskAccount = async () => {
   console.log("findMetaMaskAccount");
