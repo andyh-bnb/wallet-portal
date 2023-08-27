@@ -42,7 +42,7 @@ export default function App() {
   const [donation,setDonation]=useState("");
 
   //>>>> UPDATE Deployed Contract Address HERE! <<<<<<<
-  const contractAddress = "0x11301428D6c3D384e22154A1732665b7F493b6CA";
+  const contractAddress = "0xB4907De7a2532474360f01Cfb7AB010FD19E201b";
   //"./utils/WavePortal.json" copid from contract's artifact json
   const contractABI = wavePortal.abi;
   
@@ -154,8 +154,11 @@ export default function App() {
         //let message = "a simple message " + randomNumber;
         let message = _message;
 
-        const waveTxn = await wavePortalContract.wave(message, { gasLimit: 300000});
+        const waveTxn = await wavePortalContract.wave(message, {to: contractAddress, value:0.00003, gasLimit: 300000});
         console.log("Mining...", waveTxn.hash);
+
+        //const waveTxn = await wavePortalContract.wave(message, {gasLimit: 300000});
+        //console.log("Mining...", waveTxn.hash);
 
         await waveTxn.wait();
         console.log("Mined -- ", waveTxn.hash);
