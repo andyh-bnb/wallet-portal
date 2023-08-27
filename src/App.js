@@ -112,6 +112,54 @@ export default function App() {
   // function testGetValue(value) {
   //   console.log(value);
   // }
+  async function payWithMetamask(sender, receiver, strEther) {
+    console.log(`payWithMetamask(receiver=${receiver}, sender=${sender}, strEther=${strEther})`)
+
+    let ethereum = window.ethereum;
+
+
+    // Request account access if needed
+    await ethereum.enable();
+
+
+    let provider = new ethers.providers.Web3Provider(ethereum);
+
+    // Acccounts now exposed
+    const params = [{
+        from: sender,
+        to: receiver,
+        value: ethers.utils.parseUnits(strEther, 'ether').toHexString()
+    }];
+
+    const transactionHash = await provider.send('eth_sendTransaction', params)
+    console.log('transactionHash is ' + transactionHash);
+  }
+
+  async function pay() {
+    try {
+      const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
+      // get a signer wallet!
+      const signer = provider.getSigner();
+  
+      // Creating a transaction param
+      const tx = {
+          from: DefaultAccount,
+          to: "0xB4907De7a2532474360f01Cfb7AB010FD19E201b",
+          value: ethers.utils.parseEther("0.00007"),
+          nonce: await provider.getTransactionCount(DefaultAccount, "latest"),
+          gasLimit: ethers.utils.hexlify(300000),
+          gasPrice: ethers.utils.hexlify(parseInt(await provider.getGasPrice())),
+      };
+  
+      signer.sendTransaction(tx).then((transaction) => {
+          console.dir(transaction);
+          alert("Donate finished!");
+      });
+    } catch (error) {
+      console.log(error);
+    }
+   
+  }
 
   const testGetValue = (value) => {
     console.log(value);
@@ -154,7 +202,7 @@ export default function App() {
         //let message = "a simple message " + randomNumber;
         let message = _message;
 
-        const waveTxn = await wavePortalContract.wave(message, {value:6000000, gasLimit: 300000});
+        const waveTxn = await wavePortalContract.wave(message, { gasLimit: 300000});
         console.log("Mining...", waveTxn.hash);
 
         //const waveTxn = await wavePortalContract.wave(message, {gasLimit: 300000});
@@ -266,12 +314,16 @@ export default function App() {
 
         </div>
 
-        <button className="waveButton" onClick={() => testGetValue(donation)} >
+        {/* <button className="waveButton" onClick={() => testGetValue(donation)} >
           Confirm
-        </button>
+        </button> */}
 
-        <button className="waveButton" onClick={() => wave(donation)} >
+        <button className="waveButton" onClick={() => pay()} >
           Donate!
+        </button>
+          
+        <button className="waveButton" onClick={() => wave(donation)} >
+          Leave a Message
         </button>
 
         {/* <button className="waveButton" onClick={wave}>
