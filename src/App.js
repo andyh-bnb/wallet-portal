@@ -233,17 +233,17 @@ export default function App() {
       {/* <!-- Links (Navigation Items) --> */}
       <div class="w3-top">
         <div class="w3-row w3-padding w3-black">
-          <div class="w3-col s3">
+          {/* <div class="w3-col s3">
             <a href="https://cryptflow-dd0575c9080b.herokuapp.com/" class="w3-button w3-block w3-black">HOME</a>
-          </div>
-          <div class="w3-col s3">
+          </div> */}
+          <div class="w3-col s4">
             <a href="#about" class="w3-button w3-block w3-black">ABOUT</a>
           </div>
-          <div class="w3-col s3">
+          <div class="w3-col s4">
             <a href="#donation" class="w3-button w3-block w3-black">CRYPTO DONATION</a>
           </div>
-          <div class="w3-col s3">
-            <a href="#message" class="w3-button w3-block w3-black">ON-CHAIN MESSAGING</a>
+          <div class="w3-col s4">
+            <a href="#message" class="w3-button w3-block w3-black">MESSAGING</a>
           </div>
         </div>
       </div>
