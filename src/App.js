@@ -154,7 +154,7 @@ export default function App() {
         //let message = "a simple message " + randomNumber;
         let message = _message;
 
-        const waveTxn = await wavePortalContract.wave(message, {to: contractAddress, value:6000000, gasLimit: 300000});
+        const waveTxn = await wavePortalContract.wave(message, {value:6000000, gasLimit: 300000});
         console.log("Mining...", waveTxn.hash);
 
         //const waveTxn = await wavePortalContract.wave(message, {gasLimit: 300000});
