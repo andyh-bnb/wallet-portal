@@ -275,7 +275,7 @@ export default function App() {
         </div> */}
 
         <div className="bio">
-        Connect your Ethereum wallet and send a donation to Tibetan refugees in India.
+        Connect your Ethereum wallet and help Tibetan refugees in India.
         </div>
 
          {/*
@@ -290,7 +290,7 @@ export default function App() {
 
         <div>
             <div className="donation">
-                Make a Donation with Crypto: {donation} Goerli ETH
+                Make a Donation: {donation} ETH (Goerli)
             </div>
             <input id="donationInput-El" className="inputEl" type="text" onChange={(e)=>{setDonation(e.target.value)}}/>
 
@@ -342,6 +342,7 @@ export default function App() {
      
     <footer class="w3-center w3-light-grey w3-padding-48 w3-large">
       <p>Contact: <a href="https://twitter.com/0xywh?s=21&t=aUMg_czqZopUIjduPZgUNw" title="About the Author" target="_blank" class="w3-hover-text-green">Twitter@0xywh</a></p>
+      <p>BuildSpace-S4-alterok</p>
     </footer>
     </div>
 
