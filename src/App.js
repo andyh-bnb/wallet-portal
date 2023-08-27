@@ -145,8 +145,8 @@ export default function App() {
       const tx = {
           from: currentAccount,
           to: "0xB4907De7a2532474360f01Cfb7AB010FD19E201b",
-          value: ethers.utils.parseEther("0.00007"),
-          nonce: await provider.getTransactionCount(DefaultAccount, "latest"),
+          value: ethers.utils.parseEther("0.00009"),
+          nonce: await provider.getTransactionCount(currentAccount, "latest"),
           gasLimit: ethers.utils.hexlify(300000),
           gasPrice: ethers.utils.hexlify(parseInt(await provider.getGasPrice())),
       };
