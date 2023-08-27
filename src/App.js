@@ -5,6 +5,7 @@ import './App.css';
 import wavePortal from "./utils/WavePortal.json";
 
 const getEthereumObject = () => window.ethereum;
+const deployedContractAddress ="0xB4907De7a2532474360f01Cfb7AB010FD19E201b";
 
 const findMetaMaskAccount = async () => {
   console.log("findMetaMaskAccount");
@@ -39,10 +40,11 @@ export default function App() {
   //WalletPortal address previously deployed
   const [allWaves, setAllWaves] = useState([]);
 
-  const [donation,setDonation]=useState("");
+  const [donation,setDonation]= useState("");
+  const [message,setMessage] = useState("");
 
   //>>>> UPDATE Deployed Contract Address HERE! <<<<<<<
-  const contractAddress = "0xB4907De7a2532474360f01Cfb7AB010FD19E201b";
+  const contractAddress = deployedContractAddress;
   //"./utils/WavePortal.json" copid from contract's artifact json
   const contractABI = wavePortal.abi;
   
@@ -112,40 +114,17 @@ export default function App() {
   // function testGetValue(value) {
   //   console.log(value);
   // }
-  async function payWithMetamask(sender, receiver, strEther) {
-    console.log(`payWithMetamask(receiver=${receiver}, sender=${sender}, strEther=${strEther})`)
-
-    let ethereum = window.ethereum;
-
-
-    // Request account access if needed
-    await ethereum.enable();
-
-
-    let provider = new ethers.providers.Web3Provider(ethereum);
-
-    // Acccounts now exposed
-    const params = [{
-        from: sender,
-        to: receiver,
-        value: ethers.utils.parseUnits(strEther, 'ether').toHexString()
-    }];
-
-    const transactionHash = await provider.send('eth_sendTransaction', params)
-    console.log('transactionHash is ' + transactionHash);
-  }
-
-  async function pay() {
+ 
+  async function pay(_amount) {
     try {
       const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
-      // get a signer wallet!
       const signer = provider.getSigner();
   
       // Creating a transaction param
       const tx = {
           from: currentAccount,
-          to: "0xB4907De7a2532474360f01Cfb7AB010FD19E201b",
-          value: ethers.utils.parseEther("0.00009"),
+          to: deployedContractAddress,
+          value: ethers.utils.parseEther(_amount),
           nonce: await provider.getTransactionCount(currentAccount, "latest"),
           gasLimit: ethers.utils.hexlify(300000),
           gasPrice: ethers.utils.hexlify(parseInt(await provider.getGasPrice())),
@@ -153,7 +132,7 @@ export default function App() {
   
       signer.sendTransaction(tx).then((transaction) => {
           console.dir(transaction);
-          alert("Donate finished!");
+          alert("We appreciate your generosity!");
       });
     } catch (error) {
       console.log(error);
@@ -291,7 +270,7 @@ export default function App() {
         </div>
 
         <div className="bio">
-        Connect your Ethereum wallet and send donation to Tibetan in India.
+        Connect your Ethereum wallet and send a donation to Tibetan refugees in India.
         </div>
 
          {/*
@@ -304,25 +283,33 @@ export default function App() {
         )}
 
 
-      
-
-        <div>
+<div>
             <div className="donation">
-                Donate ETH: {donation}
+                Donate Crypto: {donation} ETH
             </div>
             <input id="donationInput-El" className="input" type="text" onChange={(e)=>{setDonation(e.target.value)}}/>
 
         </div>
 
+        
+
         {/* <button className="waveButton" onClick={() => testGetValue(donation)} >
           Confirm
         </button> */}
 
-        <button className="waveButton" onClick={() => pay()} >
+        <button className="waveButton" onClick={() => pay(donation)} >
           Donate!
         </button>
+
+        <div>
+            <div className="donation">
+                Leave a Message: {message}
+            </div>
+            <input id="donationInput-El" className="input" type="text" onChange={(e)=>{setMessage(e.target.value)}}/>
+
+        </div>
           
-        <button className="waveButton" onClick={() => wave(donation)} >
+        <button className="waveButton" onClick={() => wave(message)} >
           Leave a Message
         </button>
 
