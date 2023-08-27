@@ -230,23 +230,23 @@ export default function App() {
     
     <div className="mainContainer">
       
-      {/* <!-- Links (sit on top) --> */}
-      <div class="w3-top">
+      {/* <!-- Links (Navigation Items) --> */}
+      {/* <div class="w3-top">
         <div class="w3-row w3-padding w3-black">
           <div class="w3-col s3">
             <a href="#" class="w3-button w3-block w3-black">HOME</a>
           </div>
-          {/* <div class="w3-col s3">
+          <div class="w3-col s3">
             <a href="#about" class="w3-button w3-block w3-black">ABOUT</a>
-          </div> */}
-          {/* <div class="w3-col s3">
+          </div>
+          <div class="w3-col s3">
             <a href="#menu" class="w3-button w3-block w3-black">MENU</a>
           </div>
           <div class="w3-col s3">
             <a href="#where" class="w3-button w3-block w3-black">WHERE</a>
-          </div> */}
+          </div>
         </div>
-      </div>
+      </div> */}
      
    
       
