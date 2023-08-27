@@ -236,13 +236,13 @@ export default function App() {
           {/* <div class="w3-col s3">
             <a href="https://cryptflow-dd0575c9080b.herokuapp.com/" class="w3-button w3-block w3-black">HOME</a>
           </div> */}
-          <div class="w3-col s4">
+          <div class="w3-col s3">
             <a href="#about" class="w3-button w3-block w3-black">ABOUT</a>
           </div>
-          <div class="w3-col s4">
+          <div class="w3-col s5">
             <a href="#donation" class="w3-button w3-block w3-black">CRYPTO DONATION</a>
           </div>
-          <div class="w3-col s4">
+          <div class="w3-col s3">
             <a href="#message" class="w3-button w3-block w3-black">MESSAGING</a>
           </div>
         </div>
@@ -308,7 +308,7 @@ export default function App() {
       <div className="messageContainer" id="message">  
 
         <div className="bio">
-          Create positive karma. Send an on-chain message using an Ethereum transaction.
+          Create positive karma. Send an on-chain message.
         </div>
 
         <div>
@@ -331,7 +331,7 @@ export default function App() {
         {allWaves.map((wave, index) => {
           return (
             <div key={index} style={{ backgroundColor: "OldLace", marginTop: "16px", padding: "8px" }}>
-              <div>Address: {wave.address}</div>
+              <div>From: {wave.address}</div>
               <div>Time: {wave.timestamp.toString()}</div>
               <div>Message: {wave.message}</div>
             </div>)
@@ -340,7 +340,7 @@ export default function App() {
       </div>
 
      
-    <footer class="w3-center w3-light-grey w3-padding-48 w3-large">
+    <footer class="w3-center w3-light-grey w3-padding-48 w3-medium">
       <p>Contact: <a href="https://twitter.com/0xywh?s=21&t=aUMg_czqZopUIjduPZgUNw" title="About the Author" target="_blank" class="w3-hover-text-green">Twitter@0xywh</a></p>
       <p>BuildSpace-S4-alterok</p>
     </footer>
