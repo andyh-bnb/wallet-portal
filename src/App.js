@@ -282,7 +282,7 @@ export default function App() {
          * If there is no currentAccount render this button
          */}
         {!currentAccount && (
-          <button className="waveButton" onClick={connectWallet}>
+          <button className="donateButton" onClick={connectWallet}>
             Connect My Wallet
           </button>
         )}
@@ -290,7 +290,7 @@ export default function App() {
 
         <div>
             <div className="donation">
-                Make a Donation with Crypto: {donation} ETH
+                Make a Donation with Crypto: {donation} Goerli ETH
             </div>
             <input id="donationInput-El" className="inputEl" type="text" onChange={(e)=>{setDonation(e.target.value)}}/>
 
@@ -313,7 +313,7 @@ export default function App() {
 
         </div>
           
-        <button className="donateButton" onClick={() => wave(message)} >
+        <button className="messageButton" onClick={() => wave(message)} >
           Leave a Message
         </button>
         
