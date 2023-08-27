@@ -5,14 +5,19 @@
 }
 
 
-
-
 .dataContainer {
   margin-top: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
- 
+}
+
+.messageContainer {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color:#fffff0;
 }
 
 .header {

@@ -231,22 +231,22 @@ export default function App() {
     <div className="mainContainer">
       
       {/* <!-- Links (Navigation Items) --> */}
-      {/* <div class="w3-top">
+      <div class="w3-top">
         <div class="w3-row w3-padding w3-black">
           <div class="w3-col s3">
-            <a href="#" class="w3-button w3-block w3-black">HOME</a>
+            <a href="https://cryptflow-dd0575c9080b.herokuapp.com/" class="w3-button w3-block w3-black">HOME</a>
           </div>
           <div class="w3-col s3">
             <a href="#about" class="w3-button w3-block w3-black">ABOUT</a>
           </div>
           <div class="w3-col s3">
-            <a href="#menu" class="w3-button w3-block w3-black">MENU</a>
+            <a href="#donation" class="w3-button w3-block w3-black">CRYPTO DONATION</a>
           </div>
           <div class="w3-col s3">
-            <a href="#where" class="w3-button w3-block w3-black">WHERE</a>
+            <a href="#message" class="w3-button w3-block w3-black">ON-CHAIN MESSAGING</a>
           </div>
         </div>
-      </div> */}
+      </div>
      
    
       
@@ -254,21 +254,21 @@ export default function App() {
       <div class="w3-container bgimg" id="about">
         <div class="w3-content" >
           <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">ABOUT TIBETAN REFUGEES IN INDIA</span></h5>
-          <p class="w3-text-white">Tibetan refugees started crossing the Himalayan range in April 1959, in the wake of the Dalai Lama's fight into exile.</p>
-          <p class="w3-text-white">For some, the journey ended in Nepal and Bhutan, but India was the final destination of most.</p>
+          <p class="w3-text-white">Tibetan refugees started crossing the Himalayan range in April 1959, in the wake of the Dalai Lama's fight into exile.For some, the journey ended in Nepal and Bhutan, but India was the final destination of most.</p>
+          
           <p class="w3-text-white">According to the latest demographic survey conducted by the Tibetan Goverment-in-Exile, there are about 95,000 Tibetans in India.</p>
           <div class="w3-panel w3-leftbar w3-light-grey">
             <p><i>"There are more than 100 people in our village, and there is a great need to buy some anti-epidemic items. It would be great if you could help us with these."</i></p>
             <p>Tibetan Refugee, Lobsang</p>
           </div>
           
-          <p><strong>Medium Post:</strong> <a href="https://medium.com/@mahayana200/印度西藏居民需要你的幫助-fundraising-for-indian-tibetan-67dec43443b2" title="meidum" target="_blank" class="w3-hover-text-green">Fundraising for Indian Tibetan</a> </p>
+          {/* <p><strong>Medium Post:</strong> <a href="https://medium.com/@mahayana200/印度西藏居民需要你的幫助-fundraising-for-indian-tibetan-67dec43443b2" title="meidum" target="_blank" class="w3-hover-text-green">Fundraising for Indian Tibetan</a> </p> */}
          
         </div>
       </div>
       
       
-      <div className="dataContainer">
+      <div className="dataContainer" id="donation">
         
         {/* <div className="header">
         Crypto Donation Portal
@@ -302,17 +302,26 @@ export default function App() {
           Donate
         </button>
 
+        
+      </div>
+
+      <div className="messageContainer" id="message">  
+
+        <div className="bio">
+          Create positive karma. Send an on-chain message using an Ethereum transaction.
+        </div>
+
         <div>
             {/* <div className="donation">
                 Message to Tibetan Refugees: {message}
             </div> */}
             <div className="donation">
-                Message to Tibetan Refugees: 
+                Message for Tibetan Refugees: 
             </div>
             <input id="donationInput-El" className="inputEl" type="text" onChange={(e)=>{setMessage(e.target.value)}}/>
 
         </div>
-          
+
         <button className="messageButton" onClick={() => wave(message)} >
           Leave a Message
         </button>
