@@ -263,6 +263,7 @@ export default function App() {
           </div>
           
           {/* <p class="w3-text-white"><strong>Real Story:</strong> <a href="https://medium.com/@web3product/印度西藏居民需要你的幫助-fundraising-for-indian-tibetan-67dec43443b2" title="meidum" target="_blank" class="w3-hover-text-green">Fundraising for Indian Tibetan</a> </p> */}
+          <p class="w3-text-white"><strong>Real Story:</strong> <a href="https://tibet.net/tibet-tibetan-refugees-and-the-way-ahead/" title="meidum" target="_blank" class="w3-hover-text-green">Tibetan Refugees and the Way Ahead</a> </p>
          
         </div>
       </div>
