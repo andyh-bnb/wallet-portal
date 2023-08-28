@@ -258,7 +258,7 @@ export default function App() {
           
           {/* <p class="w3-text-white">According to the latest demographic survey conducted by the Tibetan Goverment-in-Exile, there are about 95,000 Tibetans in India.</p> */}
           <div class="w3-panel w3-leftbar w3-light-grey">
-            <p><i>"There are more than 100 people in our village, and there is a great need to buy some anti-epidemic items. It would be great if you could help us with these."</i></p>
+            <p><i>"More than 100 people are in our village, and there is a great need to buy some anti-epidemic items. We need your help!"</i></p>
             <p>Tibetan Refugee, Lobsang</p>
           </div>
           
@@ -290,7 +290,7 @@ export default function App() {
 
         <div>
             <div className="donation">
-                Make a Donation: {donation} ETH (Goerli)
+                Make a Donation: {donation} ETH
             </div>
             <input id="donationInput-El" className="inputEl" type="text" onChange={(e)=>{setDonation(e.target.value)}}/>
 
